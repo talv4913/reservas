@@ -37,12 +37,12 @@ class BloqueHorario(models.Model):
     class Meta:
         ordering = ['horario']
 
-class ReservaModel(models.Model):
+class Reserva(models.Model):
     usuario = models.ForeignKey(Usuario, on_delete=models.CASCADE, verbose_name="Creador de la reserva")
     nombre = models.CharField(max_length=200,verbose_name='Nombre completo del responsable')
     dni = models.IntegerField(verbose_name="DNI del responsable")
     comensales = models.IntegerField(verbose_name="Numero de comensales")
-    fecha = models.DateField()
+    fecha = models.DateField() #fechas futuras no mas de 2 meses antelacion
     horario = models.ManyToManyField(BloqueHorario)
     class Meta:
         ordering = ['fecha']
