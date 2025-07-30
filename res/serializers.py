@@ -4,8 +4,6 @@ from rest_framework import serializers
 
 from .models import ReservaModel
 
-MAXIMO_POR_BLOQUE = 40
-
 class ReservaSerializer(serializers.ModelSerializer):
     def validate(self, data):
         if data['fecha'] < datetime.date.today():
