@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated, IsAdminUser
 from django.shortcuts import get_object_or_404
 
 from .serializers import ReservaSerializer, DisponibilidadSerializer
-from .models import ReservaModel, BloqueHorario
+from .models import ReservaModel
 # Create your views here.
 
 
