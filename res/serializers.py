@@ -1,4 +1,4 @@
-import datetime
+from datetime import date
 
 from rest_framework import serializers
 
@@ -8,7 +8,7 @@ class ReservaSerializer(serializers.ModelSerializer):
     horario = serializers.PrimaryKeyRelatedField(many=True, queryset=BloqueHorario.objects.all())
     
     def validate(self, data):
-        if data['fecha'] < datetime.date.today():
+        if data['fecha'] < date.today():
             raise serializers.ValidationError("La fecha no puede ser del pasado")
         return data
 
@@ -32,6 +32,6 @@ class DisponibilidadSerializer(serializers.Serializer):
     comensales = serializers.IntegerField(min_value=1)
 
     def validate_fecha(self, valor):
-        if valor < datetime.date.today():
+        if valor < date.today():
             raise serializers.ValidationError("La fecha no puede ser del pasado")
         return valor
